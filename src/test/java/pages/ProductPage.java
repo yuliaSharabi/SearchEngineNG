@@ -18,7 +18,7 @@ public class ProductPage {
 	}
 		/**
 		 * getItemPrice - get the String locator for item price
-		 * @return String with resu
+		 * @return number represents item's price 
 		 */
 		public double getItemPrice(){
 			 String priceStr;
