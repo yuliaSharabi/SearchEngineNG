@@ -72,12 +72,12 @@ public class NewTest {
 		}
 		if(!partEmailBody.isEmpty())
 		{
-			Reporter.log("Email partEmailBody is: " + partEmailBody +"==", true);
-			validateResults();
-			
+			Reporter.log("Email content: " + partEmailBody +"==", true);
+			validateResults();	
 		
 		}
 	}
+	//----------------move later to a different class under Utils---------------------
 	/**
 	 * priceIsLower - Check price is lower or equals to previous one
 	 * @param price - current price
@@ -93,9 +93,8 @@ public class NewTest {
 	 * getCheaperProduct - addes to the mail partEmailBody the cheaper product and where can be bought
 	 * @param exRate - the exchanging rate from currency to NIS
 	 */
-	public void getCheaperProduct(String Sprice , double exRate,String URL)
+	public void getCheaperProduct(double price , double exRate,String URL)
 	{
-		price = Double.parseDouble(Sprice);
 		if (priceIsLower(price*exRate ,prevPrice*exRate))
 			partEmailBody += ". Product Price " + price*exRate + " is cheaper , recommand to buy in " + URL;
 		else if (prevPrice !=0) 

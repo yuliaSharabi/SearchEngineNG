@@ -20,12 +20,15 @@ public class ProductPage {
 		 * getItemPrice - get the String locator for item price
 		 * @return String with resu
 		 */
-		public String getItemPrice(){
+		public double getItemPrice(){
 			 String priceStr;
+			 double price;
 			 String elemVal = driver.findElement(productPrice).getText();
 	         Reporter.log("==========Item Price is " + elemVal + "=======", true);
 	         priceStr = elemVal.substring(1, elemVal.length());
-	         return priceStr;
+	         //return double as it is a price
+	         price = Double.parseDouble(priceStr);
+	         return price;
 	        }
 		/**
 		 * getItemStockdate - Get the Item's stock date.
