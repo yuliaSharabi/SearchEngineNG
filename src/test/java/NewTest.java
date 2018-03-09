@@ -41,8 +41,6 @@ public class NewTest {
 	//@Parameters({ "rate", "Url" }) double rate, String Url
 	public void senario(double exRate , String URL , String delimiter) throws Exception
 	{	
-		
-		//setup();
 		driver.get(URL);
 		
 		//*************create Page Objects************* 
@@ -52,13 +50,11 @@ public class NewTest {
 		
 		//**********Run actions on Page Objects*************
 		search.typeText(searchTxt);
-		search.clickOnSerachBtn();
-		partEmailBody += "Result count in " + URL + " is " + results.resultsCount();		
+		search.clickOnSerachBtn();		
 		results.clickOnresultLnk();
+		partEmailBody += "Result count in " + URL + " is " + results.resultsCount();
 		partEmailBody += ". Stock availability is " + product.getItemStockdate();
 		getCheaperProduct(product.getItemPrice(), exRate , URL);
-
-		//tireUp();
 	}
 	@Test
 	public void runSenarios( )
@@ -67,7 +63,6 @@ public class NewTest {
 			senario(4.83, URLuk, "'£'");
 			senario(3.41, URLCom, "'$'");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if(!partEmailBody.isEmpty())

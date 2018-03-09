@@ -4,17 +4,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Reporter;
 
-public class ProductPage {
-	 
-	WebDriver driver;
+public class ProductPage extends BasePage{
 	 
 	By productStockDate= By.cssSelector("#availability span");//old val xpath:"//span[contains(., 'stock') or contains(., 'Stock') ]");
 	By productPrice = By.cssSelector("span[id*='_ourprice']");
 	
-	
 	public ProductPage(WebDriver driver) {
 	
-		this.driver = driver;
+		super(driver);
 	}
 		/**
 		 * getItemPrice - get the String locator for item price
@@ -43,7 +40,6 @@ public class ProductPage {
 			 Reporter.log("==========Stockdate is " + elemVal +"=========", true);
 	         return elemVal;
 	         }
-	
 		/**
 		 * titlePresent - Check for given title , if it presents
 		 * @param title - title of the page
