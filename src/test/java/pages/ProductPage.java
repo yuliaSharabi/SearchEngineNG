@@ -4,6 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Reporter;
 
+import Utils.Product;
+import Utils.Wherehouse;
+
 public class ProductPage extends BasePage{
 	 
 	By productStockDate= By.cssSelector("#availability span");//old val xpath:"//span[contains(., 'stock') or contains(., 'Stock') ]");
@@ -52,5 +55,15 @@ public class ProductPage extends BasePage{
 	   
 	         return pageRedirected;
 	         }
+		public Product getProduct(Wherehouse where)
+		{
+			Product product = new Product();
+			product.setPrice(getItemPrice());
+			product.setStockDate(getItemStockdate());
+			product.setWhere(where);
+			
+			return product;
+			
+		}
 
 }
