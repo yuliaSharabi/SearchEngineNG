@@ -4,16 +4,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Reporter;
 
-public class ResultsPage {
-	 
-	WebDriver driver;
+public class ResultsPage extends BasePage{
+
 	 
 	By results = By.cssSelector("span[id*='s-result-count']");//old value by xpath://span[@id='s-result-count']
 	By resultImg = By.cssSelector("img[alt*='Black'][alt*='2nd']"); 
 	
 	public ResultsPage(WebDriver driver) {
 	
-		this.driver = driver;
+		super(driver);
 	}
 	 
 		/**

@@ -41,8 +41,6 @@ public class NewTest {
 	//@Parameters({ "rate", "Url" }) double rate, String Url
 	public void senario(double exRate , String URL , String delimiter) throws Exception
 	{	
-		
-		//setup();
 		driver.get(URL);
 		
 		//*************create Page Objects************* 
@@ -52,13 +50,11 @@ public class NewTest {
 		
 		//**********Run actions on Page Objects*************
 		search.typeText(searchTxt);
-		search.clickOnSerachBtn();
-		partEmailBody += "Result count in " + URL + " is " + results.resultsCount();		
+		search.clickOnSerachBtn();		
 		results.clickOnresultLnk();
+		partEmailBody += "Result count in " + URL + " is " + results.resultsCount();
 		partEmailBody += ". Stock availability is " + product.getItemStockdate();
 		getCheaperProduct(product.getItemPrice(), exRate , URL);
-
-		//tireUp();
 	}
 	@Test
 	public void runSenarios( )
@@ -67,17 +63,16 @@ public class NewTest {
 			senario(4.83, URLuk, "'£'");
 			senario(3.41, URLCom, "'$'");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if(!partEmailBody.isEmpty())
 		{
-			Reporter.log("Email partEmailBody is: " + partEmailBody +"==", true);
-			validateResults();
-			
+			Reporter.log("Email content: " + partEmailBody +"==", true);
+			validateResults();	
 		
 		}
 	}
+	//----------------move later to a different class under Utils---------------------
 	/**
 	 * priceIsLower - Check price is lower or equals to previous one
 	 * @param price - current price
@@ -93,9 +88,8 @@ public class NewTest {
 	 * getCheaperProduct - addes to the mail partEmailBody the cheaper product and where can be bought
 	 * @param exRate - the exchanging rate from currency to NIS
 	 */
-	public void getCheaperProduct(String Sprice , double exRate,String URL)
+	public void getCheaperProduct(double price , double exRate,String URL)
 	{
-		price = Double.parseDouble(Sprice);
 		if (priceIsLower(price*exRate ,prevPrice*exRate))
 			partEmailBody += ". Product Price " + price*exRate + " is cheaper , recommand to buy in " + URL;
 		else if (prevPrice !=0) 

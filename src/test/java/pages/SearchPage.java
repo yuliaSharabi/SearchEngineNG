@@ -4,17 +4,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Reporter;
 
-public class SearchPage {
-	
-	 WebDriver driver;
+public class SearchPage extends BasePage{
 	 
+		public SearchPage(WebDriver driver) {
+		super(driver);
+	}
 		By serach = By.id("twotabsearchtextbox");
 		By submit = By.cssSelector("input.nav-input[type='submit']");
 		 
-		public SearchPage(WebDriver driver) {
-		
-			this.driver = driver;
-		}
 		/**
 		 * typeText - type the given page in the text box
 		 * @param searchTxt - text to be typed
